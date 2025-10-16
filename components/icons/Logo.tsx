@@ -15,7 +15,7 @@ const Logo: React.FC<LogoProps> = ({ theme, className }) => {
         <img
             src={logoSrc}
             alt="Asis Martin-Oar Logo"
-            className={`h-8 w-auto ${className}`}
+            className={`h-7 sm:h-8 w-auto ${className || ''}`}
         />
     );
 };
