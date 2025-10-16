@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 interface SkillsCarouselProps {
     content: {
@@ -14,10 +13,52 @@ interface SkillsCarouselProps {
 
 const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ content }) => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const dragStartX = useRef(0);
+    const dragDistance = useRef(0);
     const cards = content.cards;
 
     const handleCardClick = (index: number) => {
-        setActiveIndex(index);
+        // Only allow click if it wasn't a drag
+        if (Math.abs(dragDistance.current) < 10) {
+            setActiveIndex(index);
+        }
+    };
+
+    const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+        setIsDragging(true);
+        dragStartX.current = 'touches' in e ? e.touches[0].clientX : e.clientX;
+        dragDistance.current = 0; // Reset distance on new drag
+        // Prevent default browser behavior like image dragging
+        if (e.target instanceof HTMLImageElement) {
+            e.preventDefault();
+        }
+    };
+
+    const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+        if (!isDragging) return;
+        const currentX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+        dragDistance.current = currentX - dragStartX.current;
+    };
+
+    const handleDragEnd = () => {
+        if (!isDragging) return;
+        setIsDragging(false);
+
+        const threshold = 50; // Minimum distance for a swipe
+
+        if (dragDistance.current < -threshold) {
+            // Swiped left
+            setActiveIndex((prevIndex) => (prevIndex + 1) % cards.length);
+        } else if (dragDistance.current > threshold) {
+            // Swiped right
+            setActiveIndex((prevIndex) => (prevIndex - 1 + cards.length) % cards.length);
+        }
+
+        // Reset distance for the next click check
+        setTimeout(() => {
+             dragDistance.current = 0;
+        }, 0);
     };
 
     const getCardStyle = (index: number) => {
@@ -55,15 +96,24 @@ const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ content }) => {
     return (
         <section id="skills" className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-12 font-display tracking-display">{content.title}</h2>
-            <div className="relative h-[34rem] w-full max-w-4xl mx-auto flex items-center justify-center">
+            <div 
+                className={`relative h-[34rem] w-full max-w-4xl mx-auto flex items-center justify-center select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+                onMouseDown={handleDragStart}
+                onTouchStart={handleDragStart}
+                onMouseMove={handleDragMove}
+                onTouchMove={handleDragMove}
+                onMouseUp={handleDragEnd}
+                onMouseLeave={handleDragEnd}
+                onTouchEnd={handleDragEnd}
+            >
                 {cards.map((card, index) => (
                     <div
                         key={index}
-                        className="absolute w-4/5 md:w-3/5 h-full transition-all duration-300 ease-in-out cursor-pointer"
+                        className="absolute w-4/5 md:w-3/5 h-full transition-all duration-300 ease-in-out"
                         style={getCardStyle(index)}
                         onClick={() => handleCardClick(index)}
                     >
-                        <div className="w-full h-full transition-transform duration-300 ease-in-out hover:scale-105 hover:-rotate-2">
+                        <div className="w-full h-full transition-transform duration-300 ease-in-out hover:scale-105 hover:-rotate-2 pointer-events-none">
                             <div className="flex flex-col w-full h-full rounded-2xl overflow-hidden shadow-2xl dark:shadow-black/40 bg-white dark:bg-gray-800">
                                <div className="h-1/2 w-full">
                                     <img src={card.imgSrc} alt={card.title} className="w-full h-full object-cover"/>
@@ -87,7 +137,7 @@ const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ content }) => {
                 {cards.map((_, index) => (
                     <button
                         key={index}
-                        onClick={() => handleCardClick(index)}
+                        onClick={() => setActiveIndex(index)}
                         className={`w-3 h-3 rounded-full transition-colors duration-300 ${
                             activeIndex === index ? 'bg-gray-800 dark:bg-white' : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                         }`}
