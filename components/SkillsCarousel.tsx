@@ -13,7 +13,7 @@ interface SkillsCarouselProps {
 }
 
 const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ content }) => {
-    const [activeIndex, setActiveIndex] = useState(1);
+    const [activeIndex, setActiveIndex] = useState(0);
     const cards = content.cards;
 
     const handleCardClick = (index: number) => {
@@ -81,6 +81,18 @@ const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ content }) => {
                             </div>
                         </div>
                     </div>
+                ))}
+            </div>
+            <div className="flex justify-center space-x-3 mt-8">
+                {cards.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handleCardClick(index)}
+                        className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                            activeIndex === index ? 'bg-gray-800 dark:bg-white' : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                        }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
                 ))}
             </div>
         </section>
