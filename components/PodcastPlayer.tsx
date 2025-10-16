@@ -111,7 +111,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
                 {isPlaying ? <PauseIcon /> : <PlayIcon />}
             </button>
             <div className="flex-grow overflow-hidden pr-6">
-                <h4 className="font-bold text-sm truncate">{content.title}</h4>
+                <h4 className="font-bold text-base truncate font-display tracking-display">{content.title}</h4>
                 <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{content.subtitle}</p>
                 <div className="mt-2">
                     <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">

@@ -3,6 +3,7 @@ import MediumIcon from './icons/MediumIcon';
 import LinkedInIcon from './icons/LinkedInIcon';
 import ContraIcon from './icons/ContraIcon';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
+import GithubIcon from './icons/GithubIcon';
 
 interface ContactProps {
     content: {
@@ -23,6 +24,7 @@ const SocialCard: React.FC<{ social: ContactProps['content']['socials'][0] }> = 
         Medium: <MediumIcon className="w-6 h-6 text-[#ff1467]" />,
         LinkedIn: <LinkedInIcon className="w-6 h-6 text-[#ff1467]" />,
         Contra: <ContraIcon className="w-6 h-6 text-[#ff1467]" />,
+        Github: <GithubIcon className="w-6 h-6 text-[#ff1467]" />,
     };
 
     return (
@@ -54,7 +56,7 @@ const Contact: React.FC<ContactProps> = ({ content }) => {
                     
                     {/* Left Column */}
                     <div className="text-center md:text-left">
-                        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">{content.mainTitle}</h2>
+                        <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 font-display leading-snug tracking-display">{content.mainTitle}</h2>
                         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto md:mx-0">{content.description}</p>
                         <a
                             href="https://calendly.com/asismartinoar/meetup"
@@ -69,7 +71,7 @@ const Contact: React.FC<ContactProps> = ({ content }) => {
 
                     {/* Right Column */}
                     <div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center md:text-left">{content.secondaryTitle}</h3>
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center md:text-left font-display tracking-display">{content.secondaryTitle}</h3>
                         <div className="space-y-4">
                             {content.socials.map((social) => (
                                 <SocialCard key={social.platform} social={social} />

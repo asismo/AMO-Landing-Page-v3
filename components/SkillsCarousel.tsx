@@ -54,7 +54,7 @@ const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ content }) => {
 
     return (
         <section id="skills" className="text-center">
-            <h2 className="text-4xl font-bold mb-12">{content.title}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 font-display tracking-display">{content.title}</h2>
             <div className="relative h-[34rem] w-full max-w-4xl mx-auto flex items-center justify-center">
                 {cards.map((card, index) => (
                     <div
@@ -69,7 +69,7 @@ const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ content }) => {
                                     <img src={card.imgSrc} alt={card.title} className="w-full h-full object-cover"/>
                                </div>
                                 <div className="h-1/2 p-6 flex flex-col text-left overflow-y-auto">
-                                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{card.title}</h3>
+                                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 font-display tracking-display">{card.title}</h3>
                                     <ul className="space-y-2 list-disc list-inside">
                                         {card.description.map((point, i) => (
                                             <li key={i} className="text-base text-gray-600 dark:text-gray-300 leading-relaxed">

@@ -23,7 +23,7 @@ export const content = {
                         "Hands on Design System building: multi-themed, tokens, variables and components, microinteractions.",
                         "Design thinking, Sprints, quantitative and qualitative informed decisions, accessibility."
                     ],
-                    imgSrc: "https://picsum.photos/seed/design/800/600",
+                    imgSrc: "https://www.asismartinoar.com/landing/product.jpg",
                 },
                 {
                     title: "Team & Strategy",
@@ -31,7 +31,7 @@ export const content = {
                         "Building, directing, scaling, mentoring Teams. Both at studio and decentralized.",
                         "Operational, tactical, strategic leadership for complex projects (digital transformation, Omnichannel)."
                     ],
-                    imgSrc: "https://picsum.photos/seed/strategy/800/600",
+                    imgSrc: "https://www.asismartinoar.com/landing/team.jpg",
                 },
                 {
                     title: "AI & Innovation",
@@ -39,13 +39,13 @@ export const content = {
                         "Integrating cutting edge AI into design workflows.",
                         "Building production ready products using vibe coding and automations."
                     ],
-                    imgSrc: "https://picsum.photos/seed/ai/800/600",
+                    imgSrc: "https://www.asismartinoar.com/landing/ai.jpg",
                 },
             ],
         },
         bento: {
             portfolio: {
-                title: "Portfolio",
+                title: "Selected Projects",
                 highlights: [
                     { name: "3Vision", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/46/Three_Ireland_logo.svg/838px-Three_Ireland_logo.svg.png", link: "https://asismartinoar.com/case_study01.html" },
                     { name: "SW Design System", logo: "https://media.glassdoor.com/sqll/764899/small-world-financial-services-group-squarelogo-1588347985279.png", link: "https://asismartinoar.com/case_study09.html" },
@@ -63,8 +63,8 @@ export const content = {
                 title: "AleatorIAm",
                 description: "See my latest AI experiments on vibe coding (web and app building), product design workflow explorations and full AI creative production (image/video).",
                 cta: "See AI Experiments",
-                ctaLink: "http://asismartinoar.com",
-                imageUrl: "https://picsum.photos/seed/ai-bento/800/600"
+                ctaLink: "https://tinyurl.com/aleatoriam",
+                imageUrl: "https://www.asismartinoar.com/landing/lab.jpg"
             }
         },
         contact: {
@@ -87,6 +87,11 @@ export const content = {
                     platform: "Contra",
                     description: "View my portfolio",
                     url: "https://contra.com/asismartinoar",
+                },
+                {
+                    platform: "Github",
+                    description: "See my repository",
+                    url: "https://github.com/asismo",
                 }
             ]
         },
@@ -118,7 +123,7 @@ export const content = {
                         "Construcción de Sistemas de Diseño: multitema, tokens, variables y componentes, microinteracciones.",
                         "Design thinking, Sprints, decisiones informadas cuantitativa y cualitativamente, accesibilidad."
                     ],
-                    imgSrc: "https://picsum.photos/seed/design/800/600",
+                    imgSrc: "https://www.asismartinoar.com/landing/product.jpg",
                 },
                 {
                     title: "Equipo y Estrategia",
@@ -126,7 +131,7 @@ export const content = {
                         "Construcción, dirección, escalado y mentoría de equipos. Tanto en estudio como descentralizados.",
                         "Liderazgo operacional, táctico y estratégico para proyectos complejos (transformación digital, Omnicanal)."
                     ],
-                    imgSrc: "https://picsum.photos/seed/strategy/800/600",
+                    imgSrc: "https://www.asismartinoar.com/landing/team.jpg",
                 },
                 {
                     title: "IA e Innovación",
@@ -134,13 +139,13 @@ export const content = {
                         "Integrando IA de vanguardia en los flujos de trabajo de diseño.",
                         "Construyendo productos listos para producción usando 'vibe coding' y automatizaciones."
                     ],
-                    imgSrc: "https://picsum.photos/seed/ai/800/600",
+                    imgSrc: "https://www.asismartinoar.com/landing/ai.jpg",
                 },
             ],
         },
         bento: {
             portfolio: {
-                title: "Portafolio",
+                title: "Proyectos Seleccionados",
                 highlights: [
                     { name: "3Vision", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/46/Three_Ireland_logo.svg/838px-Three_Ireland_logo.svg.png", link: "https://asismartinoar.com/case_study01.html" },
                     { name: "SW Design System", logo: "https://media.glassdoor.com/sqll/764899/small-world-financial-services-group-squarelogo-1588347985279.png", link: "https://asismartinoar.com/case_study09.html" },
@@ -158,8 +163,8 @@ export const content = {
                 title: "AleatorIAm",
                 description: "Mira mis últimos experimentos con IA en 'vibe coding' (creación de webs y apps), exploraciones de flujos de trabajo en diseño de producto y producción creativa completa con IA (imagen/video).",
                 cta: "Ver experimentos de IA",
-                ctaLink: "http://asismartinoar.com",
-                imageUrl: "https://picsum.photos/seed/ai-bento/800/600"
+                ctaLink: "https://tinyurl.com/aleatoriam",
+                imageUrl: "https://www.asismartinoar.com/landing/lab.jpg"
             }
         },
         contact: {
@@ -182,6 +187,11 @@ export const content = {
                     platform: "Contra",
                     description: "Mira mi portafolio",
                     url: "https://contra.com/asismartinoar",
+                },
+                {
+                    platform: "Github",
+                    description: "Ver mi repositorio",
+                    url: "https://github.com/asismo",
                 }
             ]
         },

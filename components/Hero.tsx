@@ -15,7 +15,7 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
         >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="order-2 md:order-1">
-                    <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tighter mb-6">
+                    <h1 className="text-5xl md:text-6xl font-extrabold leading-snug mb-6 font-display tracking-display">
                         {content.title}
                     </h1>
                     <a
@@ -27,7 +27,12 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
                         {content.cta}
                     </a>
                 </div>
-                <div className="order-1 md:order-2 h-64 md:h-full min-h-[250px] rounded-2xl bg-gradient-to-br from-red-200 via-pink-200 to-rose-300 dark:from-red-800 dark:via-pink-800 dark:to-rose-900">
+                <div className="order-1 md:order-2 h-64 md:h-full min-h-[250px] rounded-2xl overflow-hidden">
+                    <img 
+                        src="https://www.asismartinoar.com/landing/main.jpg" 
+                        alt="Abstract hero image representing technology and design" 
+                        className="w-full h-full object-cover"
+                    />
                 </div>
             </div>
         </section>
