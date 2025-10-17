@@ -10,10 +10,11 @@ interface PodcastPlayerProps {
         title: string;
         subtitle: string;
         audioSrc: string;
-    }
+    };
+    isMobile?: boolean;
 }
 
-const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
+const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content, isMobile = false }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
@@ -46,11 +47,15 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
     }, []);
 
     useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.pause();
+        const audio = audioRef.current;
+        if (audio) {
+            audio.pause();
+            setIsPlaying(false);
             setCurrentTime(0);
+            setDuration(0);
+            audio.load();
         }
-    }, [language, content.audioSrc]);
+    }, [content.audioSrc]);
 
     const togglePlayPause = () => {
         if (!audioRef.current) return;
@@ -128,8 +133,8 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
         </div>
     );
 
-    return (
-        <div className="fixed top-4 right-4 z-50">
+    const mainPlayer = (
+        <div>
             <audio
                 ref={audioRef}
                 src={content.audioSrc}
@@ -141,11 +146,26 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
                 {isExpanded ? (
                     playerContent
                 ) : (
-                    <button onClick={() => setIsExpanded(true)} className="w-12 h-12 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center shadow-md text-gray-800 dark:text-white transition-transform duration-300 ease-in-out hover:scale-105">
-                        <PlayIcon />
-                    </button>
+                    <div className="flex items-center gap-2">
+                        <button onClick={() => setIsExpanded(true)} className="w-12 h-12 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center shadow-md text-gray-800 dark:text-white transition-transform duration-300 ease-in-out hover:scale-105">
+                            <PlayIcon />
+                        </button>
+                         <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 shadow-md">
+                            <span className="text-xs font-semibold text-gray-700 dark:text-gray-300 select-none">listen</span>
+                        </div>
+                    </div>
                 )}
             </div>
+        </div>
+    );
+
+    if (isMobile) {
+        return mainPlayer;
+    }
+
+    return (
+        <div className="fixed top-4 left-4 z-50">
+            {mainPlayer}
         </div>
     );
 };

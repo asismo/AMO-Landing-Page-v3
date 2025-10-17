@@ -8,7 +8,7 @@ export const content = {
         podcast: {
             title: "Prefer Podcasts?",
             subtitle: "listen while you scroll",
-            audioSrc: "https://www.asismartinoar.com/podcasts/en_asismo_podcast_01.mp3",
+            audioSrc: "https://www.asismartinoar.com/podcasts/en_asismo_podcast_02.mp3",
         },
         hero: {
             title: "I'm Asis, a product designer crafting solutions that drive growth and empower users.",
@@ -108,7 +108,7 @@ export const content = {
         podcast: {
             title: "¿Prefieres Podcasts?",
             subtitle: "escucha mientras navegas",
-            audioSrc: "https://www.asismartinoar.com/podcasts/en_asismo_podcast_01.mp3",
+            audioSrc: "https://www.asismartinoar.com/podcasts/es_asismo_podcast_02.mp3",
         },
         hero: {
             title: "Soy Asis, un diseñador de producto creando soluciones que impulsan el crecimiento y empoderan a los usuarios.",

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import PodcastPlayer from './components/PodcastPlayer';
@@ -26,15 +25,32 @@ const App: React.FC = () => {
 
     return (
         <div className="min-h-screen text-gray-800 dark:text-gray-200">
-            <Header
-                language={language}
-                setLanguage={setLanguage}
-                theme={theme}
-                setTheme={setTheme}
-                content={currentContent.header}
-            />
-            <PodcastPlayer language={language} content={currentContent.podcast} />
-            <main className="container mx-auto px-4 md:px-8 pt-24 pb-12 space-y-24 md:space-y-32">
+            {/* Mobile-only top bar for alignment */}
+            <div className="md:hidden fixed top-4 left-0 right-0 z-50 flex items-center justify-center gap-2 px-4">
+                <PodcastPlayer language={language} content={currentContent.podcast} isMobile />
+                <Header
+                    language={language}
+                    setLanguage={setLanguage}
+                    theme={theme}
+                    setTheme={setTheme}
+                    content={currentContent.header}
+                    isMobile
+                />
+            </div>
+
+            {/* Desktop-only components */}
+            <div className="hidden md:block">
+                <Header
+                    language={language}
+                    setLanguage={setLanguage}
+                    theme={theme}
+                    setTheme={setTheme}
+                    content={currentContent.header}
+                />
+                <PodcastPlayer language={language} content={currentContent.podcast} />
+            </div>
+
+            <main className="container mx-auto px-4 md:px-8 pt-32 md:pt-24 pb-12 space-y-24 md:space-y-32">
                 <Hero content={currentContent.hero} />
                 <SkillsCarousel content={currentContent.skills} />
                 <BentoGrid content={currentContent.bento} />
