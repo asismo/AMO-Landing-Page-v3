@@ -20,8 +20,12 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null);
 
-    // This effect syncs our React state with the audio element's actual state.
-    // This is robust against playback being controlled from outside React (e.g., browser media controls).
+    useEffect(() => {
+        // Set the initial state based on screen size when the component mounts.
+        const isDesktop = window.innerWidth >= 768;
+        setIsExpanded(isDesktop);
+    }, []); // Empty dependency array ensures this runs only once on mount.
+
     useEffect(() => {
         const audio = audioRef.current;
         if (audio) {
@@ -31,7 +35,6 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
             audio.addEventListener('pause', syncPlayState);
             audio.addEventListener('ended', syncPlayState);
 
-            // Initial sync
             syncPlayState();
 
             return () => {
@@ -42,11 +45,8 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
         }
     }, []);
 
-    // This effect handles changes in the audio source when the language is switched.
     useEffect(() => {
         if (audioRef.current) {
-            // When the src changes, we want to stop the old audio.
-            // The new audio will be loaded by React setting the `src` prop.
             audioRef.current.pause();
             setCurrentTime(0);
         }
@@ -60,7 +60,6 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
         } else {
             audioRef.current.play().catch(error => {
                 console.error("Audio playback failed:", error);
-                // The 'pause' event listener will correctly update the state if play fails.
             });
         }
     };
@@ -88,7 +87,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
         const newTime = percentage * audio.duration;
         
         audio.currentTime = newTime;
-        setCurrentTime(newTime); // Manually update for immediate UI feedback
+        setCurrentTime(newTime);
     };
 
     const formatTime = (time: number) => {
@@ -103,8 +102,8 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
     const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
     
     const playerContent = (
-         <div className="relative flex items-center space-x-4 p-4 w-full max-w-xs bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md">
-            <button onClick={() => setIsExpanded(false)} className="absolute top-2 right-2 p-1 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white md:hidden z-10">
+         <div className="relative flex items-center space-x-4 p-4 w-full max-w-xs bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md transition-transform duration-300 ease-in-out hover:scale-105">
+            <button onClick={() => setIsExpanded(false)} className="absolute top-2 right-2 p-1 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white z-10">
                 <CloseIcon />
             </button>
             <button onClick={togglePlayPause} className="w-12 h-12 flex-shrink-0 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full flex items-center justify-center hover:scale-105 transition-transform">
@@ -138,19 +137,14 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content }) => {
                 onLoadedMetadata={handleLoadedMetadata}
                 preload="metadata"
             />
-            {/* Mobile view: Collapsible */}
-            <div className="md:hidden">
+            <div>
                 {isExpanded ? (
                     playerContent
                 ) : (
-                    <button onClick={() => setIsExpanded(true)} className="w-12 h-12 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center shadow-md text-gray-800 dark:text-white">
+                    <button onClick={() => setIsExpanded(true)} className="w-12 h-12 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center shadow-md text-gray-800 dark:text-white transition-transform duration-300 ease-in-out hover:scale-105">
                         <PlayIcon />
                     </button>
                 )}
-            </div>
-            {/* Desktop view: Always visible */}
-            <div className="hidden md:block">
-                 {playerContent}
             </div>
         </div>
     );
