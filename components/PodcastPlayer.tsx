@@ -22,10 +22,9 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content, isMobi
     const audioRef = useRef<HTMLAudioElement>(null);
 
     useEffect(() => {
-        // Set the initial state based on screen size when the component mounts.
         const isDesktop = window.innerWidth >= 768;
         setIsExpanded(isDesktop);
-    }, []); // Empty dependency array ensures this runs only once on mount.
+    }, []);
 
     useEffect(() => {
         const audio = audioRef.current;
@@ -134,7 +133,7 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content, isMobi
     );
 
     const mainPlayer = (
-        <div>
+        <div className="relative">
             <audio
                 ref={audioRef}
                 src={content.audioSrc}
@@ -142,25 +141,31 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({ language, content, isMobi
                 onLoadedMetadata={handleLoadedMetadata}
                 preload="metadata"
             />
-            <div>
-                {isExpanded ? (
-                    playerContent
-                ) : (
-                    <div className="flex items-center gap-2">
-                        <button onClick={() => setIsExpanded(true)} className="w-12 h-12 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center shadow-md text-gray-800 dark:text-white transition-transform duration-300 ease-in-out hover:scale-105">
-                            <PlayIcon />
-                        </button>
-                         <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 shadow-md">
-                            <span className="text-xs font-semibold text-gray-700 dark:text-gray-300 select-none">listen</span>
-                        </div>
-                    </div>
-                )}
+            {/* Collapsed view - becomes invisible but maintains layout space when expanded */}
+            <div className={`flex items-center gap-2 ${isExpanded ? 'invisible' : ''}`}>
+                <button onClick={() => setIsExpanded(true)} className="w-12 h-12 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center shadow-md text-gray-800 dark:text-white transition-transform duration-300 ease-in-out hover:scale-105">
+                    <PlayIcon />
+                </button>
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 shadow-md">
+                    <span className="text-xs font-semibold text-gray-700 dark:text-gray-300 select-none">listen</span>
+                </div>
             </div>
+
+            {/* Expanded view - positioned absolutely to float over content */}
+            {isExpanded && (
+                <div className="absolute top-0 left-0">
+                    {playerContent}
+                </div>
+            )}
         </div>
     );
 
     if (isMobile) {
-        return mainPlayer;
+        return (
+            <div className={isExpanded ? 'z-10' : ''}>
+                {mainPlayer}
+            </div>
+        );
     }
 
     return (

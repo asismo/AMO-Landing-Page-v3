@@ -24,7 +24,7 @@ const App: React.FC = () => {
     const currentContent = content[language];
 
     return (
-        <div className="min-h-screen text-gray-800 dark:text-gray-200">
+        <div className="min-h-screen text-gray-800 dark:text-gray-200 overflow-x-hidden">
             {/* Mobile-only top bar for alignment */}
             <div className="md:hidden fixed top-4 left-0 right-0 z-50 flex items-center justify-center gap-2 px-4">
                 <PodcastPlayer language={language} content={currentContent.podcast} isMobile />
