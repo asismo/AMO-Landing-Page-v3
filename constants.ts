@@ -74,19 +74,14 @@ export const content = {
             secondaryTitle: "Connect with me",
             socials: [
                 {
-                    platform: "Medium",
-                    description: "Read my articles",
-                    url: "https://asismartinoar.medium.com/",
-                },
-                {
                     platform: "LinkedIn",
                     description: "Connect professionally",
                     url: "https://www.linkedin.com/in/asismartinoar/",
                 },
                 {
-                    platform: "Contra",
-                    description: "View my portfolio",
-                    url: "https://contra.com/asismartinoar",
+                    platform: "Medium",
+                    description: "Read my articles",
+                    url: "https://medium.com/@asismartinoar",
                 },
                 {
                     platform: "Github",
@@ -174,19 +169,14 @@ export const content = {
             secondaryTitle: "Conecta conmigo",
             socials: [
                 {
-                    platform: "Medium",
-                    description: "Lee mis artículos",
-                    url: "https://asismartinoar.medium.com/",
-                },
-                {
                     platform: "LinkedIn",
                     description: "Conecta profesionalmente",
                     url: "https://www.linkedin.com/in/asismartinoar/",
                 },
                 {
-                    platform: "Contra",
-                    description: "Mira mi portafolio",
-                    url: "https://contra.com/asismartinoar",
+                    platform: "Medium",
+                    description: "Lee mis artículos",
+                    url: "https://medium.com/@asismartinoar",
                 },
                 {
                     platform: "Github",

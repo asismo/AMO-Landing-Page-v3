@@ -36,7 +36,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ content }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <BentoCard className="md:col-span-2">
-                    <h3 className="text-3xl md:text-4xl font-bold mb-4 font-display tracking-display">{content.portfolio.title}</h3>
+                    <h3 className="text-2xl md:text-4xl font-bold mb-4 font-display tracking-display">{content.portfolio.title}</h3>
                     <div className="flex flex-col sm:flex-row gap-4 mb-4">
                         {content.portfolio.highlights.map(item => (
                             <a key={item.name} href={item.link} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white dark:bg-gray-800 p-3 rounded-xl flex items-center gap-3 border border-gray-200 dark:border-gray-700 transition-colors">
@@ -60,14 +60,14 @@ const BentoGrid: React.FC<BentoGridProps> = ({ content }) => {
                 <BentoCard className="md:col-span-3">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                         <div>
-                            <h3 className="text-3xl md:text-4xl font-bold mb-2 font-display tracking-display">{content.ai.title}</h3>
+                            <h3 className="text-2xl md:text-4xl font-bold mb-2 font-display tracking-display">{content.ai.title}</h3>
                             <p className="text-gray-600 dark:text-gray-300 mb-6">{content.ai.description}</p>
                              <a href={content.ai.ctaLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#ff1467] text-white font-semibold px-6 py-3 rounded-full text-base hover:opacity-90 transition-opacity shadow-lg">
                                 {content.ai.cta}
                                 <ArrowRightIcon className="w-5 h-5" />
                             </a>
                         </div>
-                        <div className="h-48 md:h-full w-full bg-gray-100 dark:bg-gray-800 rounded-2xl">
+                        <div className="h-48 md:h-64 w-full bg-gray-100 dark:bg-gray-800 rounded-2xl">
                              <img src={content.ai.imageUrl} alt="AI Experiments" className="w-full h-full object-cover rounded-2xl" />
                         </div>
                     </div>

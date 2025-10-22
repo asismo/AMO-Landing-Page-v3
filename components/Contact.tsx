@@ -1,7 +1,6 @@
 import React from 'react';
 import MediumIcon from './icons/MediumIcon';
 import LinkedInIcon from './icons/LinkedInIcon';
-import ContraIcon from './icons/ContraIcon';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
 import GithubIcon from './icons/GithubIcon';
 
@@ -23,7 +22,6 @@ const SocialCard: React.FC<{ social: ContactProps['content']['socials'][0] }> = 
     const iconMap: { [key: string]: React.ReactNode } = {
         Medium: <MediumIcon className="w-6 h-6 text-[#ff1467]" />,
         LinkedIn: <LinkedInIcon className="w-6 h-6 text-[#ff1467]" />,
-        Contra: <ContraIcon className="w-6 h-6 text-[#ff1467]" />,
         Github: <GithubIcon className="w-6 h-6 text-[#ff1467]" />,
     };
 
@@ -56,7 +54,7 @@ const Contact: React.FC<ContactProps> = ({ content }) => {
                     
                     {/* Left Column */}
                     <div className="text-center md:text-left">
-                        <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 font-display leading-snug tracking-display">{content.mainTitle}</h2>
+                        <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 font-display leading-snug tracking-display">{content.mainTitle}</h2>
                         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto md:mx-0">{content.description}</p>
                         <a
                             href="https://calendly.com/asismartinoar/meetup"

@@ -15,7 +15,7 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
         >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="order-2 md:order-1">
-                    <h1 className="text-5xl md:text-6xl font-extrabold leading-snug mb-6 font-display tracking-display">
+                    <h1 className="text-4xl md:text-6xl font-extrabold leading-snug mb-4 md:mb-6 font-display tracking-display">
                         {content.title}
                     </h1>
                     <a
