@@ -1,9 +1,11 @@
 import React from 'react';
+import ArrowRightIcon from './icons/ArrowRightIcon';
 
 interface HeroProps {
     content: {
         title: string;
         cta: string;
+        ctaLink: string;
     }
 }
 
@@ -15,17 +17,20 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
         >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="order-2 md:order-1">
-                    <h1 className="text-4xl md:text-6xl font-extrabold leading-snug mb-4 md:mb-6 font-display tracking-display">
+                    <h1 className="text-4xl md:text-6xl font-extrabold leading-display mb-6 font-display tracking-display">
                         {content.title}
                     </h1>
-                    <a
-                        href="https://www.figma.com/deck/SXaKdBwH5gTEfG8RXrXTOv"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block bg-gradient-to-r from-[#ff5c8a] to-[#ff1467] text-white font-semibold px-8 py-3 rounded-full text-lg hover:scale-105 transition-transform shadow-lg"
-                    >
-                        {content.cta}
-                    </a>
+                    <div className="mt-6">
+                        <a
+                            href={content.ctaLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center justify-center gap-2 bg-[#ff1467] text-white font-semibold px-6 py-3 rounded-full text-lg hover:bg-[#e0125e] transition-colors shadow-lg"
+                        >
+                            {content.cta}
+                            <ArrowRightIcon className="w-5 h-5 transition-transform duration-200 ease-in-out group-hover:translate-x-1" />
+                        </a>
+                    </div>
                 </div>
                 <div className="order-1 md:order-2 h-64 md:h-full min-h-[250px] rounded-2xl overflow-hidden">
                     <img 

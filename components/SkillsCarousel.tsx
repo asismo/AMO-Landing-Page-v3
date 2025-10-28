@@ -95,7 +95,7 @@ const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ content }) => {
 
     return (
         <section id="skills" className="text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-12 font-display tracking-display">{content.title}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-12 font-display tracking-display leading-display">{content.title}</h2>
             <div 
                 className={`relative h-[40rem] md:h-[34rem] w-full max-w-4xl mx-auto flex items-center justify-center select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
                 onMouseDown={handleDragStart}

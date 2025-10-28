@@ -13,6 +13,7 @@ export const content = {
         hero: {
             title: "I'm Asis, a product designer crafting solutions that drive growth and empower users.",
             cta: "Launch presentation (3mins)",
+            ctaLink: "https://www.figma.com/deck/SXaKdBwH5gTEfG8RXrXTOv",
         },
         skills: {
             title: "Things I'm good at",
@@ -108,6 +109,7 @@ export const content = {
         hero: {
             title: "Soy Asis, un diseñador de producto creando soluciones que impulsan el crecimiento y empoderan a los usuarios.",
             cta: "Ver presentación (3mins)",
+            ctaLink: "https://www.figma.com/deck/VDeZTmv4LDlT6ACrO2Vbld",
         },
         skills: {
             title: "En lo que soy bueno",

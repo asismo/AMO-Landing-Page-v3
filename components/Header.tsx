@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage, theme, setTheme,
                 <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                     {theme === 'light' ? <MoonIcon /> : <SunIcon />}
                 </button>
-                <a href="https://calendly.com/asismartinoar/meetup" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold bg-[#ff1467] text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity hidden sm:block">
+                <a href="https://calendly.com/asismartinoar/meetup" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold bg-[#ff1467] text-white px-4 py-2 rounded-full hover:bg-[#e0125e] transition-colors hidden sm:block">
                     {content.cta}
                 </a>
             </nav>

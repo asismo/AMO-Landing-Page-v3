@@ -54,16 +54,16 @@ const Contact: React.FC<ContactProps> = ({ content }) => {
                     
                     {/* Left Column */}
                     <div className="text-center md:text-left">
-                        <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 font-display leading-snug tracking-display">{content.mainTitle}</h2>
+                        <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 font-display leading-display tracking-display">{content.mainTitle}</h2>
                         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto md:mx-0">{content.description}</p>
                         <a
                             href="https://calendly.com/asismartinoar/meetup"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 bg-[#ff1467] text-white font-semibold px-6 py-3 rounded-full text-lg hover:opacity-90 transition-opacity shadow-lg"
+                            className="group inline-flex items-center justify-center gap-2 bg-[#ff1467] text-white font-semibold px-6 py-3 rounded-full text-lg hover:bg-[#e0125e] transition-colors shadow-lg"
                         >
                             {content.cta}
-                            <ExternalLinkIcon className="w-5 h-5" />
+                            <ExternalLinkIcon className="w-5 h-5 transition-transform duration-200 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </a>
                     </div>
 
